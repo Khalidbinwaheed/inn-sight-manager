@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   Card, 
@@ -10,7 +9,7 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { CheckCircle2, AlertCircle, Clock, Tool, Search } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Clock, Wrench, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { 
@@ -37,7 +36,7 @@ const statusIcons = {
   available: <CheckCircle2 className="h-4 w-4 text-green-600" />,
   occupied: <AlertCircle className="h-4 w-4 text-blue-600" />,
   cleaning: <Clock className="h-4 w-4 text-purple-600" />,
-  maintenance: <Tool className="h-4 w-4 text-amber-600" />
+  maintenance: <Wrench className="h-4 w-4 text-amber-600" />
 };
 
 const statusLabels = {
