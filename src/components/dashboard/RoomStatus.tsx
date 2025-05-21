@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { 
   Card, 
@@ -108,7 +109,7 @@ export default function RoomStatus() {
               <SelectValue placeholder="Floor" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Floors</SelectItem>
+              <SelectItem value="all">All Floors</SelectItem>
               <SelectItem value="1">Floor 1</SelectItem>
               <SelectItem value="2">Floor 2</SelectItem>
               <SelectItem value="3">Floor 3</SelectItem>
@@ -119,7 +120,7 @@ export default function RoomStatus() {
               <SelectValue placeholder="Type" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Types</SelectItem>
+              <SelectItem value="all">All Types</SelectItem>
               <SelectItem value="Standard">Standard</SelectItem>
               <SelectItem value="Deluxe">Deluxe</SelectItem>
               <SelectItem value="Suite">Suite</SelectItem>
