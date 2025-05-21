@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import {
   Hotel,
@@ -19,13 +20,15 @@ interface SidebarItemProps {
   text: string;
   active?: boolean;
   collapsed: boolean;
+  to: string;
   onClick?: () => void;
 }
 
-const SidebarItem = ({ icon, text, active, collapsed, onClick }: SidebarItemProps) => {
+const SidebarItem = ({ icon, text, active, collapsed, to, onClick }: SidebarItemProps) => {
   return (
     <li>
-      <button
+      <Link
+        to={to}
         onClick={onClick}
         className={cn(
           "flex items-center w-full p-2 rounded-md hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors",
@@ -35,29 +38,25 @@ const SidebarItem = ({ icon, text, active, collapsed, onClick }: SidebarItemProp
       >
         <span className="flex-shrink-0">{icon}</span>
         {!collapsed && <span className="ml-3 whitespace-nowrap">{text}</span>}
-      </button>
+      </Link>
     </li>
   );
 };
 
 export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
-  const [activeItem, setActiveItem] = useState('Dashboard');
+  const location = useLocation();
 
   const menuItems = [
-    { text: 'Dashboard', icon: <LayoutDashboard size={20} /> },
-    { text: 'Rooms', icon: <Bed size={20} /> },
-    { text: 'Reservations', icon: <Calendar size={20} /> },
-    { text: 'Guests', icon: <Users size={20} /> },
-    { text: 'Staff', icon: <Users size={20} /> },
-    { text: 'Billing', icon: <FileText size={20} /> },
-    { text: 'Messages', icon: <MessageSquare size={20} /> },
-    { text: 'Settings', icon: <Settings size={20} /> },
+    { text: 'Dashboard', icon: <LayoutDashboard size={20} />, path: '/' },
+    { text: 'Rooms', icon: <Bed size={20} />, path: '/rooms' },
+    { text: 'Reservations', icon: <Calendar size={20} />, path: '/reservations' },
+    { text: 'Guests', icon: <Users size={20} />, path: '/guests' },
+    { text: 'Staff', icon: <Users size={20} />, path: '/staff' },
+    { text: 'Billing', icon: <FileText size={20} />, path: '/billing' },
+    { text: 'Messages', icon: <MessageSquare size={20} />, path: '/messages' },
+    { text: 'Settings', icon: <Settings size={20} />, path: '/settings' },
   ];
-
-  const handleItemClick = (itemName: string) => {
-    setActiveItem(itemName);
-  };
 
   return (
     <div
@@ -80,9 +79,9 @@ export default function Sidebar() {
               key={item.text}
               icon={item.icon}
               text={item.text}
-              active={activeItem === item.text}
+              active={location.pathname === item.path}
               collapsed={collapsed}
-              onClick={() => handleItemClick(item.text)}
+              to={item.path}
             />
           ))}
         </ul>
