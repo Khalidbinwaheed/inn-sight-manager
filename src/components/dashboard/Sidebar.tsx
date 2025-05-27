@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -43,7 +42,7 @@ const SidebarItem = ({ icon, text, active, collapsed, to, onClick }: SidebarItem
   );
 };
 
-export default function Sidebar() {
+export default function Sidebar({ className }: { className?: string }) {
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
 
@@ -62,13 +61,18 @@ export default function Sidebar() {
     <div
       className={cn(
         "bg-sidebar border-r border-sidebar-border h-screen flex flex-col transition-all duration-300",
-        collapsed ? "w-16" : "w-64"
+        collapsed ? "w-16" : "w-64",
+        className
       )}
     >
       <div className="flex items-center p-4 border-b border-sidebar-border">
-        <div className="flex items-center">
-          <Hotel className="h-6 w-6 text-hotel-600" />
-          {!collapsed && <span className="ml-2 text-xl font-semibold text-sidebar-foreground whitespace-nowrap">Hotel Pro</span>}
+        <div className="flex items-center w-full">
+          <Hotel className="h-6 w-6 text-hotel-600 flex-shrink-0" />
+          {collapsed ? (
+            <span className="ml-2 text-xl font-semibold text-sidebar-foreground whitespace-nowrap">FG</span>
+          ) : (
+            <span className="ml-3 text-xl font-semibold text-sidebar-foreground leading-tight">Feather Group of hotels</span>
+          )}
         </div>
       </div>
 
