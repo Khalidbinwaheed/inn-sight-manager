@@ -21,6 +21,7 @@ import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { toast } from 'sonner';
 import GuestForm from './GuestForm';
+import { cn } from '@/lib/utils';
 
 interface Guest {
   id: number;
@@ -185,15 +186,15 @@ const GuestList = () => {
           </div>
         ) : (
           <>
-            <div className="rounded-md border">
+            <div className="rounded-md border border-border bg-card text-foreground">
               <Table>
-                <TableHeader>
-                  <TableRow>
+                <TableHeader className="bg-muted/50">
+                  <TableRow className="border-border">
                     <TableHead>Guest</TableHead>
-                    <TableHead>Contact</TableHead>
+                    <TableHead className="hidden sm:table-cell">Contact</TableHead>
                     <TableHead>Room</TableHead>
-                    <TableHead>Check In</TableHead>
-                    <TableHead>Check Out</TableHead>
+                    <TableHead className="hidden md:table-cell">Check In</TableHead>
+                    <TableHead className="hidden md:table-cell">Check Out</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead className="text-right">Actions</TableHead>
                   </TableRow>
@@ -201,38 +202,38 @@ const GuestList = () => {
                 <TableBody>
                   {currentGuests.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={7} className="text-center py-8">
+                      <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
                         No guests found
                       </TableCell>
                     </TableRow>
                   ) : (
                     currentGuests.map((guest) => (
-                      <TableRow key={guest.id}>
+                      <TableRow key={guest.id} className="border-border hover:bg-muted/30">
                         <TableCell>
                           <div className="flex items-center gap-3">
                             <Avatar>
-                              <AvatarFallback>
+                              <AvatarFallback className="bg-secondary text-secondary-foreground">
                                 {guest.first_name[0]}{guest.last_name[0]}
                               </AvatarFallback>
                             </Avatar>
                             <div>
-                              <p className="font-medium">{guest.first_name} {guest.last_name}</p>
+                              <p className="font-medium text-foreground">{guest.first_name} {guest.last_name}</p>
                               <p className="text-sm text-muted-foreground">{guest.email}</p>
                             </div>
                           </div>
                         </TableCell>
-                        <TableCell>
+                        <TableCell className="hidden sm:table-cell text-muted-foreground">
                           <div>
                             <p className="text-sm">{guest.phone}</p>
-                            <p className="text-sm text-muted-foreground">{guest.address}</p>
+                            <p className="text-sm">{guest.address}</p>
                           </div>
                         </TableCell>
-                        <TableCell>{guest.room_number || '-'}</TableCell>
-                        <TableCell>{guest.check_in_date ? new Date(guest.check_in_date).toLocaleDateString() : '-'}</TableCell>
-                        <TableCell>{guest.check_out_date ? new Date(guest.check_out_date).toLocaleDateString() : '-'}</TableCell>
+                        <TableCell className="text-muted-foreground">{guest.room_number || '-'}</TableCell>
+                        <TableCell className="hidden md:table-cell text-muted-foreground">{guest.check_in_date ? new Date(guest.check_in_date).toLocaleDateString() : '-'}</TableCell>
+                        <TableCell className="hidden md:table-cell text-muted-foreground">{guest.check_out_date ? new Date(guest.check_out_date).toLocaleDateString() : '-'}</TableCell>
                         <TableCell>
                           {guest.status && (
-                            <Badge className={getStatusColor(guest.status)}>
+                            <Badge className={cn(getStatusColor(guest.status), "text-primary-foreground")} >
                               {guest.status}
                             </Badge>
                           )}
