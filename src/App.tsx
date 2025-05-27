@@ -13,7 +13,6 @@ import Messages from "./pages/Messages";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./components/theme-provider"
-import { ThemeToggle } from "./components/theme-toggle"
 
 const queryClient = new QueryClient();
 
@@ -39,9 +38,6 @@ const App = () => (
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
-        <div className="fixed top-4 right-4">
-          <ThemeToggle />
-        </div>
       </QueryClientProvider>
     </div>
   </ThemeProvider>
