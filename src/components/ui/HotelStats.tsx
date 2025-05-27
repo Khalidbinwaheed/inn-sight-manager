@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -23,7 +22,7 @@ export const HotelStats = ({
   className,
 }: HotelStatsProps) => {
   return (
-    <div className={cn("hotel-stats-card", className)}>
+    <div className={cn("hotel-stats-card transition-transform transform hover:scale-[1.02] duration-200 ease-in-out p-4 md:p-5 bg-card border border-border", className)}>
       <div className="flex items-start justify-between">
         <div>
           <p className="text-sm font-medium text-muted-foreground">{title}</p>
