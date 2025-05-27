@@ -119,13 +119,13 @@ const RoomStatus = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredRooms.map((room) => (
-            <Card key={room.id} className="relative">
+            <Card key={room.id} className="relative transition-transform transform hover:scale-[1.02] duration-200 ease-in-out">
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg">Room {room.room_number}</CardTitle>
+                  <CardTitle className="text-lg text-foreground">Room {room.room_number}</CardTitle>
                   {getStatusIcon(room.status)}
                 </div>
-                <CardDescription className="capitalize">{room.room_type}</CardDescription>
+                <CardDescription className="capitalize text-muted-foreground">{room.room_type}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
@@ -137,12 +137,12 @@ const RoomStatus = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm text-muted-foreground">Price per night:</span>
-                    <span className="text-sm font-medium">${room.price_per_night}</span>
+                    <span className="text-sm font-medium text-foreground">${room.price_per_night}</span>
                   </div>
                 </div>
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full border-border text-foreground hover:bg-accent hover:text-accent-foreground">
                   View Details
                 </Button>
               </CardFooter>
