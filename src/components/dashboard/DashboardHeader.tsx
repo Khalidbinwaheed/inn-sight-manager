@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Bell, Search, User, Settings } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -12,10 +11,11 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export default function DashboardHeader() {
   return (
-    <header className="bg-white border-b border-border p-4 flex items-center justify-between">
+    <header className="bg-background text-foreground border-b border-border p-4 flex items-center justify-between">
       <div className="flex items-center">
         <h1 className="text-2xl font-bold mr-6">Dashboard</h1>
         <div className="relative max-w-sm hidden md:block">
@@ -74,17 +74,17 @@ export default function DashboardHeader() {
             <Button variant="ghost" className="relative" size="sm">
               <Avatar className="h-8 w-8">
                 <AvatarImage src="" alt="User" />
-                <AvatarFallback className="bg-primary text-primary-foreground">JD</AvatarFallback>
+                <AvatarFallback className="bg-primary text-primary-foreground">KH</AvatarFallback>
               </Avatar>
-              <span className="ml-2 hidden md:inline-flex">John Doe</span>
+              <span className="ml-2 hidden md:inline-flex">Khalid</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-[200px]">
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={() => console.log('View Profile')}>
               <User className="mr-2 h-4 w-4" />
               <span>My Profile</span>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={() => console.log('Go to Settings')}>
               <Settings className="mr-2 h-4 w-4" />
               <span>Settings</span>
             </DropdownMenuItem>
@@ -94,6 +94,9 @@ export default function DashboardHeader() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+
+        <ThemeToggle />
+
       </div>
     </header>
   );
