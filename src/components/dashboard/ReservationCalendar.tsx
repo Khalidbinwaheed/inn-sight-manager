@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Calendar } from '@/components/ui/calendar';
 import { 
@@ -64,7 +63,7 @@ export default function ReservationCalendar() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <Card className="lg:col-span-1">
+      <Card className="lg:col-span-1 bg-card border border-border">
         <CardHeader>
           <CardTitle>Reservation Calendar</CardTitle>
           <CardDescription>View and manage upcoming reservations</CardDescription>
@@ -124,22 +123,22 @@ export default function ReservationCalendar() {
             </Select>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-4 md:p-6">
           <div className="space-y-4">
             <div className="rounded-md border">
-              <div className="grid grid-cols-5 p-4 text-sm font-medium border-b">
+              <div className="grid grid-cols-3 sm:grid-cols-5 p-3 sm:p-4 text-xs sm:text-sm font-medium border-b text-muted-foreground">
                 <div>Guest</div>
                 <div>Room</div>
-                <div>Type</div>
+                <div className="hidden sm:block">Type</div>
                 <div>Status</div>
                 <div className="text-right">Action</div>
               </div>
               <div className="divide-y">
                 {todaysReservations.map((reservation) => (
-                  <div key={reservation.id} className="grid grid-cols-5 p-4 text-sm items-center">
-                    <div className="font-medium">{reservation.guest}</div>
-                    <div>{reservation.room}</div>
-                    <div>{reservation.checkin ? 'Check-In' : 'Check-Out'}</div>
+                  <div key={reservation.id} className="grid grid-cols-3 sm:grid-cols-5 p-3 sm:p-4 text-xs sm:text-sm items-center">
+                    <div className="font-medium text-foreground">{reservation.guest}</div>
+                    <div className="text-muted-foreground">{reservation.room}</div>
+                    <div className="hidden sm:block text-muted-foreground">{reservation.checkin ? 'Check-In' : 'Check-Out'}</div>
                     <div>
                       <Badge variant={
                         reservation.status === 'Confirmed' ? 'outline' :
@@ -149,7 +148,7 @@ export default function ReservationCalendar() {
                       </Badge>
                     </div>
                     <div className="text-right">
-                      <select className="text-xs border rounded p-1">
+                      <select className="text-xs border rounded p-1 bg-background text-foreground border-border">
                         <option>Actions</option>
                         <option>View Details</option>
                         <option>Check In</option>
