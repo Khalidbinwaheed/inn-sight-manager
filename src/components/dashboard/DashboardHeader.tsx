@@ -12,8 +12,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { useNavigate } from 'react-router-dom';
 
 export default function DashboardHeader() {
+  const navigate = useNavigate();
+
   return (
     <header className="bg-background text-foreground border-b border-border p-4 flex items-center justify-between">
       <div className="flex items-center">
@@ -80,11 +83,11 @@ export default function DashboardHeader() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-[200px]">
-            <DropdownMenuItem onClick={() => console.log('View Profile')}>
+            <DropdownMenuItem onClick={() => navigate('/profile')}>
               <User className="mr-2 h-4 w-4" />
               <span>My Profile</span>
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => console.log('Go to Settings')}>
+            <DropdownMenuItem onClick={() => navigate('/app-settings')}>
               <Settings className="mr-2 h-4 w-4" />
               <span>Settings</span>
             </DropdownMenuItem>
