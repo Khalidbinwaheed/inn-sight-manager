@@ -13,6 +13,8 @@ import Messages from "./pages/Messages";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./components/theme-provider"
+import Profile from "./pages/Profile";
+import SettingsPage from "./pages/SettingsPage";
 
 const queryClient = new QueryClient();
 
@@ -33,7 +35,8 @@ const App = () => (
               <Route path="/billing" element={<Billing />} />
               <Route path="/messages" element={<Messages />} />
               <Route path="/settings" element={<Settings />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/app-settings" element={<SettingsPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
